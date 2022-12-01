@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% block mainbody %}
+<div class="px-4 py-5 my-5 text-center">
+  {% if "user_name" in data %}
+  <h1>{{data.user_name}} Products</h1>
+  {%- endif %} 
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product ID</th>
+        <th scope="col">ID Certificate</th>
+        <th scope="col">Product details</th>
+        <th scope="col">QRcode</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% if "products" in data %}
+    {% for product in data.products %}
+       <tr>
+        <td>{{product["product_name"]}}</td>
+        <td><a href="/u/viewproduct/productdetail/{{data.index}}/{{product['product_ID']}}">{{product["product_ID"]}}</a></td>
+        <td>{{product["ID_cert"][:10]}}...</td>
+        <td>{{product["msg"][25:]}}...</a></td>
+        <td>
+            <img src="data:image/png;base64,{{product['code_64']}}"/>
+        </td>
+       </tr>
+    {% endfor %}
+  {%- endif %} 
+      <tr>
+        <td colspan="5"><a class="btn btn-primary" href="/u/addproductpage/{{data.index}}">Add new</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock mainbody %}

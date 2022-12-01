@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% block mainbody %}
+<div class="px-4 py-5 my-5 text-center">
+  
+  <h1>About This Product</h1>
+  <table class="table table-striped table-bordered">
+    {% for p in data.product %}
+    <tbody>
+        <tr>
+          <th scope="row">Product ID</th>
+          <td>{{p.product_ID}}</td>
+        </tr>
+        <tr>
+          <th scope="row">ID Certificate</th>
+          <td>{{p.ID_cert[:25]}}...</td>
+        </tr>
+        <tr>
+          <th scope="row">Product details</th>
+          <td>{{p.msg}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Owner</th>
+          <td>{{data.owner.user_name}}</td>
+        </tr>
+      
+      <tr>
+        <td colspan="5"><a class="btn btn-primary" href="/transcation/{{data.owner.index}}/{{p.product_ID}}">Buy</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock mainbody %}

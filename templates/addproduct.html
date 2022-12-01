@@ -1,0 +1,42 @@
+{% extends 'base.html' %} 
+{% block mainbody %}
+  <div class="px-4 py-5 my-5 text-center">
+   <h1>add new production(create a new block)</h1>
+  </div>
+    <div class="row g-5 d-flex justify-content-center">
+        <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Information</h4>
+        <form action="/u/addproduct/{{data.index}}" method="post">
+            <div class="row g-3">
+            <div class="col-12">
+                <label for="username" class="form-label">User name</label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" name="username" value="{{data.user_name}}" required readonly>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="address2" class="form-label">product name</label>
+                <input type="text" class="form-control" name="productname" placeholder="will use later" required>
+            </div>
+
+            <div class="col-12">
+                <label for="address" class="form-label">production extra information</label>
+                <input type="text" class="form-control" name="exinfor" placeholder="what about your product inforamtion" required>
+                <div class="invalid-feedback">
+                Please enter something.
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="address2" class="form-label">TAB<span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="will use later">
+            </div>
+            </div>
+
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+        </form>
+        </div>
+    </div>
+{% endblock mainbody %}

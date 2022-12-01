@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block mainbody %}
+  <div class="px-4 py-5 my-5 text-center">
+    <h1>BlockChain</h1>
+    <div class="container-lg">
+      <table>
+        {% for xblock in data.theChainX %} 
+        <tr>
+          <th>
+            <div class="card text-white bg-dark m-2 w-75 h-50">
+              <div class="card-body">
+                <h5 class="card-title">Block Location:</br>{{xblock.x_index,xblock.y_index}}</h5>
+                <p class="card-text">
+                  PID: {{xblock.data.product_ID}}
+                </p>
+                <p class="cardx-text">
+                  ID Cert: {{xblock.data.ID_cert[:25]}}...
+                </p>
+                <p>
+                  Creation Time: {{xblock.timestamp}}
+                </p>
+              </div>
+            </div> 
+          </th>
+          {% for sublist in data.theChainY %}  <!-- for y blocks-->
+          {% for yblock in sublist %} 
+          {% if yblock.x_index == xblock.x_index %}
+          <td>  
+            <div class="card bg-light m-2 w-90 h-50">
+              <div class="card-body">
+                <h5 class="card-title">Block Location:</br>{{yblock.x_index,yblock.y_index}}</h5>
+                <p class="card-text">
+                  PID: {{yblock.data.product_ID}}
+                </p>
+                <p class="cardx-text">
+                  seller: {{yblock.data.Seller_ID}}
+                </p>
+                <p class="cardx-text">
+                  buyer: {{yblock.data.Buyer_ID}}
+                </p>
+                <p>
+                  Creation Time: {{yblock.timestamp}}
+                </p>
+              </div>
+            </div> 
+          </td>
+          {%- endif %}
+          {% endfor %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+         
+  </div>
+  </div>
+  <style>
+    /* .card {  
+      background: RGBA(33,37,41,var(--bs-bg-opacity,1));
+      display: inline-block;
+      color: white;
+    }
+    .yblock{
+      background: RGBA(33,37,41,var(--bs-bg-opacity,1));
+      color: white;
+    } */
+    .card::before{
+      content: '';
+      position: absolute;
+      top: 6em;
+      left: -4em;
+      width: 4em;
+      height: .2em;
+      background: RGBA(33,37,41,var(--bs-bg-opacity,1));
+    }
+
+    .card:first-child::before {
+      display: none;
+    }
+  </style>
+{% endblock mainbody %} 
+
+
+<!-- {% if "theChainX" in data %}
+      {% for block in data.theChainX %} {# the bc link #}
+
+          <div class="card m-2 w-50">
+            <div class="card-body">
+              <h5 class="card-title">Block Location:</br>{{block.x_index,block.y_index}}</h5>
+              <p class="card-text">
+                PID: {{block.data.product_ID}}
+              </p>
+              <p class="cardx-text">
+                ID Cert: {{block.data.ID_cert[:25]}}...
+              </p>
+              <p>
+                Creation Time: {{block.timestamp}}
+              </p>
+            </div>
+          </div> 
+        {% endfor %}
+    {%- endif %}  -->
