@@ -3,8 +3,10 @@
   The user will have a pair of keys after registering on the server.
   The private key will be held on the user side, and the public key will be saved in the center server to verify the user's private key.
   Instead of the traditional login system, users will show their private key as identification.
+  
+  ## Demo
   ![](https://github.com/JLAlexabc/blockchaincsci401/blob/main/buy%20product.gif)
-  ![]()
+  ![](https://github.com/JLAlexabc/blockchaincsci401/blob/main/Qr.gif)
   ## Cryptography Algorithm
     Elliptic Curve Cryptography (ECC)
   ### Tech use
